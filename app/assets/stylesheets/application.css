@@ -39,3 +39,9 @@ table.user-scores td.wrong {
     width: 80px;
     text-align: center;
 }
+
+table.user-scores td.open {
+    background-color: #007fff;
+    width: 80px;
+    text-align: center;
+}

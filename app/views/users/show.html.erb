@@ -20,6 +20,8 @@
             <td><%= reply.question.text %></td>
             <% if reply.is_correct %>
                 <td class="correct">Correct</td>
+            <% elsif reply.question.answer.blank? %>
+                <td class="open">Open</td>
             <% else %>
                 <td class="wrong">Wrong</td>
             <% end %>

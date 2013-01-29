@@ -4,11 +4,16 @@ Trivia::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
 
   resources :questions do
+    collection do
+      post 'answer'
+    end
     member do
-      put 'save_and_score' => "questions#save_and_score"
+      post 'answer'
     end
   end
+
   resources :users
+
 
   root :to => 'pages#main'
 

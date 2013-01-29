@@ -9,6 +9,7 @@ gem "pg"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "tweetstream"
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,8 +36,6 @@ group :development do
   gem "better_errors", ">= 0.3.2"
   gem "binding_of_caller", ">= 0.6.8"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-
 end
 
 gem 'jquery-rails'

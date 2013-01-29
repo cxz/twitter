@@ -13,9 +13,9 @@
   </div>
 <% end %>
 
-<%= form_for @question, :url => url_for(:action => :save_and_score, :controller => :questions), :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @question, :url => {:action => :answer}, :method => :post, :html => { :class => 'form-horizontal' } do |f| %>
   <br/><br/>
-
+    <%= f.hidden_field :id %>
   <div class="control-group">
     <%= f.label :answer, :class => 'control-label' %>
     <div class="controls">

@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def save_and_score
+  def answer
     @question = Question.find(params[:id])
     @question.answer! params[:question][:answer]
     redirect_to @question, notice: "Question closed, scores updated!"

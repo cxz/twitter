@@ -11,8 +11,11 @@ class Question < ActiveRecord::Base
 
   def answer!(text)
     transaction do
-      self.text = text
-      self.replies.update_all({:is_correct => true}, ['lower(text) like lower(?)', "%#{self.text}"])
+      self.answer = text
+      self.replies.update_all({:is_correct => false})
+      self.replies.update_all({:is_correct => true}, ['lower(text) like lower(?)', "%#{self.answer}"])
+
+      self.save!
     end
   end
 end
