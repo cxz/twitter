@@ -8,6 +8,11 @@
   <dd><%= @question.text %></dd>
 </dl>
 
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:answer) %>:</strong></dt>
+  <dd><%= @question.answer %></dd>
+</dl>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               questions_path, :class => 'btn'  %>

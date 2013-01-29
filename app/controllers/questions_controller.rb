@@ -42,15 +42,26 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(params[:question])
 
+    tweet = Twitter.update(@question.text)
+    @question.uid = tweet.id
+
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+
+        format.html { redirect_to @question, notice: "Question created and tweeted (#{@question.uid})" }
         format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def save_and_score
+    @question = Question.find(params[:id])
+    @question.update_attributes!(:answer => params[:question][:answer])
+    #todo: score
+    redirect_to @question, notice: "Successfully updated."
   end
 
   # PUT /questions/1
@@ -80,4 +91,5 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

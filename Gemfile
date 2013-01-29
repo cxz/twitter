@@ -8,6 +8,7 @@ gem "figaro", ">= 0.5.3"
 gem "pg"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "tweetstream"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,7 +33,7 @@ group :development do
   gem 'webrick', '1.3.1'
   gem "quiet_assets", ">= 1.0.1"
   gem "better_errors", ">= 0.3.2"
-  #gem "binding_of_caller", ">= 0.6.8"
+  gem "binding_of_caller", ">= 0.6.8"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
 
