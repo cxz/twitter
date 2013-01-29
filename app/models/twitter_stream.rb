@@ -14,10 +14,15 @@ class TwitterStream
     end
 
     @client.on_timeline_status do |status|
-      #text
-      #in_reply_to_status_id
+      text = status.text
+      question_uid = status.in_reply_to_status_id
+      user_uid = status.user.id
+      uid = status.id
+      puts "on_timeline: #{status.user.id} #{question_uid} #{text}"
 
-      puts "on_timeline: #{status.user.id} #{status.in_reply_to_status_id} #{status.text}"
+      if !text.blank? and !question_uid.blank? and !user_uid.blank?
+        save_reply(user_uid, question_uid, text, uid)
+      end
     end
 
     @client.on_delete do |status_id, user_id|
@@ -30,6 +35,12 @@ class TwitterStream
 
     @client.userstream
 
+  end
+
+  protected
+
+  def save_reply(user_uid, question_uid, text, uid)
+    Reply.create(:user_uid => user_uid, :question_uid => question_uid, :text => text, :uid => uid)
   end
 
 
