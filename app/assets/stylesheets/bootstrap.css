@@ -5496,9 +5496,12 @@ legend {
 .alert h6 {
   color: #ffffff;
 }
+
 .label {
+    /*
   min-width: 80px;
   min-height: 80px;
+  */
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;

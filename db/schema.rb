@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129060719) do
+ActiveRecord::Schema.define(:version => 20130129083017) do
 
   create_table "questions", :force => true do |t|
     t.string   "text"
@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(:version => 20130129060719) do
   end
 
   create_table "replies", :force => true do |t|
-    t.string   "uid",          :null => false
-    t.string   "text",         :null => false
-    t.string   "user_uid",     :null => false
-    t.string   "question_uid", :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "uid",                             :null => false
+    t.string   "text",                            :null => false
+    t.string   "user_uid",                        :null => false
+    t.string   "question_uid",                    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "is_correct",   :default => false
   end
 
   add_index "replies", ["question_uid"], :name => "index_replies_on_question_uid"

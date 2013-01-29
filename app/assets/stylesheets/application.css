@@ -13,3 +13,29 @@
  *= require bootstrap_and_overrides
  *= require bootstrap
  */
+
+table.user-scores {
+    width: 80%;
+}
+
+table.user-scores th {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+table.user-scores td {
+    height: 20px;
+    margin: 10px;
+}
+
+table.user-scores td.correct {
+    background-color: #96ed7a;
+    width: 80px;
+    text-align: center;
+}
+
+table.user-scores td.wrong {
+    background-color: #c43c35;
+    width: 80px;
+    text-align: center;
+}

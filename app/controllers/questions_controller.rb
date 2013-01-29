@@ -59,9 +59,8 @@ class QuestionsController < ApplicationController
 
   def save_and_score
     @question = Question.find(params[:id])
-    @question.update_attributes!(:answer => params[:question][:answer])
-    #todo: score
-    redirect_to @question, notice: "Successfully updated."
+    @question.answer! params[:question][:answer]
+    redirect_to @question, notice: "Question closed, scores updated!"
   end
 
   # PUT /questions/1

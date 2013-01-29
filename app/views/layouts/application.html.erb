@@ -36,6 +36,8 @@
   </head>
   <body>
 
+  <div id="wrap">
+
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -63,10 +65,10 @@
     <br/>
     <br/>
     <br/>
-    <div class="container">
-        <div class="row">
-          <% if false %>
-          <div class="span3">
+    <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span2">
+            <% if false %>
             <div class="well sidebar-nav">
               <h3>Admin</h3>
               <ul class="nav nav-list">
@@ -75,26 +77,33 @@
                 <li><%= link_to "Users", "/path2"  %></li>
               </ul>
             </div><!--/.well -->
+            <% end %>
           </div><!--/span-->
-          <% end %>
-          <div class="span9">
+          <div class="span10">
             <%= bootstrap_flash %>
             <%= yield %>
+
           </div>
+
+
         </div><!--/row-->
 
-      <br/>
-      <br/>
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
 
     </div> <!-- /container -->
+    <div id="push"></div>
+  </div>
 
-    <!-- Javascripts
-    ================================================== -->
+  <footer>
+    <div class="container">
+      <p>&copy; Company 2013</p>
+    </div>
+  </footer>
+
+  <!-- Javascripts
+ ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+
 
   </body>
 </html>

@@ -1,13 +1,57 @@
-<%- model_class = User -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <div class="span3">
+    <h3><%= @user.name  %></h3>
+    <b>Score:</b> <%= @user.score %> points  <br/>
+    <b>Correct:</b> <%= @user.score %> of <%= @user.replies.count %>
+  </div>
+  <div class="span9">
+
+    <h3>Questions</h3>
+    <table class="user-scores table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th>Question</th>
+        <th>Correct</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @user.replies.each do |reply| %>
+          <tr>
+            <td><%= reply.question.text %></td>
+            <% if reply.is_correct %>
+                <td class="correct">Correct</td>
+            <% else %>
+                <td class="wrong">Wrong</td>
+            <% end %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+
+    <h3>Standings</h3>
+    <table class="user-scores table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th>User</th>
+        <th>Answers</th>
+        <th>Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @standings.each do |s| %>
+          <tr>
+            <td><%= s['name'] %></td>
+            <td><%= s['answers'] %></td>
+            <td><%= s['score'] %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+
+  </div>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:uid) %>:</strong></dt>
-  <dd><%= @user.uid %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @user.name %></dd>
-</dl>
 
 
