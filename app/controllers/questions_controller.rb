@@ -59,7 +59,11 @@ class QuestionsController < ApplicationController
 
   def answer
     @question = Question.find(params[:id])
-    @question.answer! params[:question][:answer]
+    if params[:close]
+      #todo: close the question
+    else
+      @question.answer! params[:question][:answer]
+    end
     redirect_to @question, notice: "Question closed, scores updated!"
   end
 
