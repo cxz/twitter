@@ -25,11 +25,11 @@ class User < ActiveRecord::Base
 
   def self.standings
     connection.select_all(%Q{
-    select users.uid, users.name,
+    select s.* from (
+    select users.uid, users.name, users.nickname, users.image, users.id,
       (select count(*) from replies, questions where questions.uid = replies.question_uid and questions.kind <> 0 and replies.user_uid = users.uid) as answers,
       (select count(*) from replies, questions where questions.uid = replies.question_uid and questions.kind <> 0 and replies.user_uid = users.uid and replies.is_correct) as score
-      from users
-      order by score
+      from users) s order by score desc, s.id asc
     })
   end
 

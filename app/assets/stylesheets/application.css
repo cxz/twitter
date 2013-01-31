@@ -14,6 +14,10 @@
  *= require bootstrap
  */
 
+td.avatar {
+    width: 32px;
+}
+
 body#trivia-app a.btn-primary  {
     color: #ffffff;
 }
@@ -30,6 +34,7 @@ table.user-scores th {
 table.user-scores td {
     height: 20px;
     margin: 10px;
+    vertical-align: middle;
 }
 
 table.user-scores td.correct {

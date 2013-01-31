@@ -21,4 +21,15 @@ class Question < ActiveRecord::Base
       self.save!
     end
   end
+
+  def display_kind
+    case self.kind
+      when KIND_MESSAGE
+        return "Plain tweet"
+      when KIND_QUESTION
+        return "Multi-choice"
+      else
+        return "Unknown"
+    end
+  end
 end

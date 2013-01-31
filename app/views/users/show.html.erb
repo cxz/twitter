@@ -44,6 +44,7 @@
     <table class="user-scores table table-hover table-condensed">
       <thead>
       <tr>
+        <th>&nbsp;</th>
         <th>User</th>
         <th>Score/Answers</th>
       </tr>
@@ -51,11 +52,13 @@
       <tbody>
       <% @standings.each do |s| %>
           <tr>
-            <td>
-              <% unless @user.image.blank? %>
-                  <%= image_tag(@user.image, :size => "32x32", :class => :avatar) %>
+            <td class="avatar">
+              <% unless s['image'].blank? %>
+                  <%= image_tag(s['image'], :size => "32x32", :class => :avatar) %>
               <% end %>
-              <%= s['name'] %>
+            </td>
+            <td>
+              <%= s['nickname'] || s['name'] %>
             </td>
             <td><%= s['score'] %>/<%= s['answers'] %></td>
           </tr>
