@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
   def main
+    @user = current_user
+    @standings = User.standings
   end
 
   def admin

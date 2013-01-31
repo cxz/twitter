@@ -47,17 +47,18 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">Twitter Game</a>
-          <% if current_user %>
           <div class="container nav-collapse">
+            <% if current_user && current_user.is_admin? %>
             <ul class="nav">
+              <li><%= link_to "Admins", admins_path  %></li>
               <li><%= link_to "Questions", questions_path  %></li>
               <li><%= link_to "Users", users_path  %></li>
             </ul>
+            <% end %>
             <ul class="nav pull-right">
               <li><%= render :partial => "shared/header" %></li>
             </ul>
           </div><!--/.nav-collapse -->
-          <% end %>
         </div>
       </div>
     </div>

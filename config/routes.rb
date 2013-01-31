@@ -14,6 +14,7 @@ Trivia::Application.routes.draw do
   end
 
   resources :users
+  resources :admins
 
   get "/admin", :to => "pages#admin"
 

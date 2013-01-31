@@ -1,0 +1,38 @@
+<%= form_for @question, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :text, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :text, :cols => 50, :rows => 3, :class => 'text_area', :placeholder => "question" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.select(:kind, [["Multiple choice", Question::KIND_QUESTION], ["Message / Plain Tweet", Question::KIND_MESSAGE]]) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Save & tweet", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                questions_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+<% if @question.id and @question.kind != Question::KIND_MESSAGE %>
+<%= form_for @question, :url => {:action => :answer}, :method => :post, :html => { :class => 'form-horizontal' } do |f| %>
+  <br/><br/>
+    <%= f.hidden_field :id %>
+  <div class="control-group">
+    <%= f.label :answer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :answer, :class => 'text_field', :placeholder => "answer" %>
+    </div>
+  </div>
+
+    <div class="form-actions">
+      <%= f.submit "Save & Score", :class => 'btn btn-primary' %>
+      <%= f.submit "Close", :name => :close, :class => 'btn btn-primary' %>
+    </div>
+<% end %>
+<% end %>
+

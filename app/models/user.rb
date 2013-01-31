@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :provider, :uid, :nickname, :image
+  attr_accessible :name, :provider, :uid, :nickname, :image, :admin
 
   has_many :replies, :foreign_key => :user_uid, :primary_key => :uid
 

@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  def admin_only
+    raise "Unauthorized" unless current_user.is_admin?
+  end
 end
