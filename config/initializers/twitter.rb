@@ -32,3 +32,7 @@ TweetStream.configure do |config|
   config.auth_method        = :oauth
 end
 
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}
+
