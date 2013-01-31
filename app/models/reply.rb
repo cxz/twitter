@@ -3,4 +3,6 @@ class Reply < ActiveRecord::Base
 
   belongs_to :question, :foreign_key => :question_uid, :primary_key => :uid
 
+  scope :valid, joins(:question).where(:questions => {:kind => Question::KIND_QUESTION})
+
 end

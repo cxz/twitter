@@ -1,8 +1,17 @@
 <div class="row" xmlns="http://www.w3.org/1999/html">
   <div class="span3">
+
+    <br/>
+    <br/>
+
+    <% unless @user.image.blank? %>
+        <%= image_tag(@user.image, :class => :avatar) %>
+    <% end %>
     <h3><%= @user.name  %></h3>
+
+
     <b>Score:</b> <%= @user.score %> points  <br/>
-    <b>Correct:</b> <%= @user.score %> of <%= @user.replies.count %>
+    <b>Correct:</b> <%= @user.score %> of <%= @user.valid_replies.count %>
   </div>
   <div class="span9">
 
@@ -15,7 +24,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @user.replies.each do |reply| %>
+      <% @user.valid_replies.each do |reply| %>
           <tr>
             <td><%= reply.question.text %></td>
             <% if reply.is_correct %>
@@ -36,16 +45,19 @@
       <thead>
       <tr>
         <th>User</th>
-        <th>Answers</th>
-        <th>Score</th>
+        <th>Score/Answers</th>
       </tr>
       </thead>
       <tbody>
       <% @standings.each do |s| %>
           <tr>
-            <td><%= s['name'] %></td>
-            <td><%= s['answers'] %></td>
-            <td><%= s['score'] %></td>
+            <td>
+              <% unless @user.image.blank? %>
+                  <%= image_tag(@user.image, :size => "32x32", :class => :avatar) %>
+              <% end %>
+              <%= s['name'] %>
+            </td>
+            <td><%= s['score'] %>/<%= s['answers'] %></td>
           </tr>
       <% end %>
       </tbody>

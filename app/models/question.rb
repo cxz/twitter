@@ -1,5 +1,8 @@
 class Question < ActiveRecord::Base
-  attr_accessible :text, :answer
+  attr_accessible :text, :answer, :status, :kind
+
+  KIND_MESSAGE = 0
+  KIND_QUESTION = 1
 
   has_many :replies, :foreign_key => :question_uid, :primary_key => :uid
 

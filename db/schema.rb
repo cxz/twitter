@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129083017) do
+ActiveRecord::Schema.define(:version => 20130131044714) do
 
   create_table "questions", :force => true do |t|
     t.string   "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "answer"
     t.string   "uid"
+    t.boolean  "open",       :default => true, :null => false
+    t.integer  "kind",       :default => 0,    :null => false
   end
 
   create_table "replies", :force => true do |t|
@@ -38,8 +40,11 @@ ActiveRecord::Schema.define(:version => 20130129083017) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "admin",      :default => false, :null => false
+    t.string   "nickname"
+    t.string   "image"
   end
 
   add_index "users", ["uid"], :name => "index_users_on_uid"
