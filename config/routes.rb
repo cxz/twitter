@@ -1,6 +1,7 @@
 Trivia::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure", :to => "pages#failure"
   match "/signout" => "sessions#destroy", :as => :signout
 
   resources :questions do
