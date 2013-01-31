@@ -33,6 +33,7 @@ class TwitterStream
       puts "on_limit: #{skip_count}"
     end
 
+    puts "Listening"
     @client.userstream
 
   end
@@ -40,7 +41,16 @@ class TwitterStream
   protected
 
   def save_reply(user_uid, question_uid, text, uid)
-    Reply.create(:user_uid => user_uid, :question_uid => question_uid, :text => text, :uid => uid)
+    #if reply for same question+user already exists, just replace
+    reply = Reply.where(:user_uid => user_uid, :question_uid => question_uid).first
+    if reply.nil?
+      Reply.create(:user_uid => user_uid, :question_uid => question_uid, :text => text, :uid => uid)
+    else
+      reply.text = text
+      reply.uid = uid
+      reply.save!
+    end
+
   end
 
 
