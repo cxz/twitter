@@ -1,0 +1,18 @@
+
+
+<br/>
+<div class="center hero-unit">
+  <h1>Welcome! </h1>
+
+  <br/>
+
+  <% if current_user %>
+
+  <% else %>
+      <%= form_tag("/auth/twitter") do %>
+          <%= button_tag "Sign in with Twitter", :class => "btn btn-inverse" %>
+      <% end %>
+  <% end %>
+
+
+</div>
