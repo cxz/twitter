@@ -19,7 +19,7 @@ class Heartbeat < ActiveRecord::Base
   end
 
   def is_alive?
-    self.alive && self.updated_at > DateTime.now - 60
+    self.alive && self.updated_at > Time.now - 60
   end
 
 end
