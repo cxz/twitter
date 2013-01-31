@@ -1,0 +1,11 @@
+<% if current_user && current_user.is_admin? %>
+    <% hb = Heartbeat.get %>
+    <% if hb.nil? ||  !hb.is_alive? %>
+        <div class="alert alert-error">
+          Looks like the listener is not up, please verify.
+          <% unless hb.nil? %>
+              Last hearbeat at <%= hb.updated_at %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
