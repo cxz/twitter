@@ -13,6 +13,7 @@
   </div>
 <% end %>
 
+<% if @question.id %>
 <%= form_for @question, :url => {:action => :answer}, :method => :post, :html => { :class => 'form-horizontal' } do |f| %>
   <br/><br/>
     <%= f.hidden_field :id %>
@@ -27,5 +28,6 @@
       <%= f.submit "Save & Score", :class => 'btn btn-primary' %>
       <%= f.submit "Close", :name => :close, :class => 'btn btn-primary' %>
     </div>
-
 <% end %>
+<% end %>
+
