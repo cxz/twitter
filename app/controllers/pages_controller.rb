@@ -6,4 +6,8 @@ class PagesController < ApplicationController
   def admin
   end
 
+  def failure
+    redirect_to root_path, :notice => "Oops, looks like you denied. To access the game, you need to authorize access with Twitter."
+  end
+
 end
